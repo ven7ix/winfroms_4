@@ -26,7 +26,7 @@ namespace wpf_winforms_4
             //axies
             DisplayModel(Cube(new Point3D(1000, 0.02, 0.02), new Point3D(0, 0, 0), Colors.Black)); //  Y |
             DisplayModel(Cube(new Point3D(0.02, 0.02, 1000), new Point3D(0, 0, 0), Colors.Black)); //    |___ X
-            DisplayModel(Cube(new Point3D(0.02, 1000, 0.02), new Point3D(0, 0, 0), Colors.Black)); // Z /    
+            DisplayModel(Cube(new Point3D(0.02, 1000, 0.02), new Point3D(0, 0, 0), Colors.Black)); // Z /
             //skybox
             DisplayModel(Cube(new Point3D(1000, 1000, 1000), new Point3D(0, 0, 0), Colors.White));
 
@@ -37,6 +37,75 @@ namespace wpf_winforms_4
         /// <summary>
         /// Gradient
         /// </summary>
+        private double MinFuncValue(int boundsRadius)
+        {
+            double minFuncVale = int.MaxValue;
+
+            Point maxPoint = new Point(boundsRadius, boundsRadius);
+            Point minPoint = new Point(-boundsRadius, -boundsRadius);
+
+            //<= because we need to calculate the values in all boundaries
+            for (double x = minPoint.X; x <= maxPoint.X; x++)
+            {
+                for (double z = minPoint.Y; z <= maxPoint.Y; z++)
+                {
+                    double funcValue = function.Calculate(x, z);
+
+                    if (funcValue < minFuncVale)
+                        minFuncVale = funcValue;
+                }
+            }
+
+            return minFuncVale;
+        }
+
+        private double MaxFuncValue(int boundsRadius)
+        {
+            double maxFuncValue = int.MinValue;
+
+            Point maxPoint = new Point(boundsRadius, boundsRadius);
+            Point minPoint = new Point(-boundsRadius, -boundsRadius);
+
+            //<= because we need to calculate the values in all boundaries
+            for (double x = minPoint.X; x <= maxPoint.X; x++)
+            {
+                for (double z = minPoint.Y; z <= maxPoint.Y; z++)
+                {
+                    if (function.Calculate(x, z) > maxFuncValue)
+                        maxFuncValue = function.Calculate(x, z);
+                }
+            }
+
+            return maxFuncValue;
+        }
+
+        private PointCollection MeshTextureCoordinates(int boundsRadius, double detail)
+        {
+            Point maxPoint = new Point(boundsRadius, boundsRadius);
+            Point minPoint = new Point(-boundsRadius, -boundsRadius);
+
+            PointCollection meshTextureCoordinates = new PointCollection();
+
+            //<= because we need to calculate the values in all boundaries
+            for (double x = minPoint.X; x <= maxPoint.X; x += 1 / detail)
+            {
+                for (double z = minPoint.Y; z <= maxPoint.Y; z += 1 / detail)
+                {
+                    double funcValue = function.Calculate(x, z);
+
+                    Point point = new Point()
+                    {
+                        X = (x - minPoint.X) / (maxPoint.X - minPoint.X),
+                        Y = (funcValue - MinFuncValue(boundsRadius)) / (MaxFuncValue(boundsRadius) - MinFuncValue(boundsRadius))
+                    };
+
+                    meshTextureCoordinates.Add(point);
+                }
+            }
+
+            return meshTextureCoordinates;
+        }
+
         private DiffuseMaterial DiffuseMaterialGradient()
         {
             System.Drawing.Bitmap gradient = new System.Drawing.Bitmap(Properties.Resources.gradient);
@@ -84,13 +153,6 @@ namespace wpf_winforms_4
                 {
                     Point3D meshPoint = new Point3D(x, function.Calculate(x, z), z);
                     mesh.Positions.Add(meshPoint);
-
-                    Point point = new Point()
-                    {
-                        X = (meshPoint.X),
-                        Y = (meshPoint.Z)
-                    };
-                    mesh.TextureCoordinates.Add(point);
                 }
             }
 
@@ -112,6 +174,8 @@ namespace wpf_winforms_4
                     mesh.TriangleIndices.Add(p4); //    /  |
                 }
             }
+
+            mesh.TextureCoordinates = MeshTextureCoordinates(boundsRadius, detail);
 
             GeometryModel3D surfaceModel = new GeometryModel3D()
             {
