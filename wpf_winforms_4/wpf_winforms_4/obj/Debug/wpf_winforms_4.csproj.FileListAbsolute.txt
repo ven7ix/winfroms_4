@@ -1,0 +1,17 @@
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\bin\Debug\wpf_winforms_4.exe.config
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\bin\Debug\wpf_winforms_4.exe
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\bin\Debug\wpf_winforms_4.pdb
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\wpf_winforms_4.csproj.AssemblyReference.cache
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\App.g.cs
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\wpf_winforms_4_MarkupCompile.cache
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\wpf_winforms_4_MarkupCompile.lref
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\wpf_winforms_4.g.resources
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\wpf_winforms_4.Properties.Resources.resources
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\wpf_winforms_4.csproj.GenerateResource.cache
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\wpf_winforms_4.csproj.CoreCompileInputs.cache
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\wpf_winforms_4.exe
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\wpf_winforms_4.pdb
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\FunctionSelected.g.cs
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\FunctionSelected.baml
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\FunctionControl.baml
+C:\Users\Andrew\source\repos\wpf_winforms_4\wpf_winforms_4\obj\Debug\FunctionControl.g.cs
