@@ -15,7 +15,6 @@ namespace wpf_winforms_4
         private readonly UIElement window;
         private readonly DirectionalLight light;
 
-        public Point3D position;
         public double radius = 40;
         public double phi = 1;
         public double theta = 180;

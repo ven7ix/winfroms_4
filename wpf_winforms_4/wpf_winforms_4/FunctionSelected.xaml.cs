@@ -25,11 +25,11 @@ namespace wpf_winforms_4
             tabLinearExpression.Content = controlLinearExpression;
             tabsFunctions.Items.Add(tabLinearExpression);
 
-            TabItem tabWomanFunc = new TabItem();
-            FunctionControl controlWomanFunc = new FunctionControl(new AtanDerivative(), tabWomanFunc);
-            tabWomanFunc.Header = "atan derivative";
-            tabWomanFunc.Content = controlWomanFunc;
-            tabsFunctions.Items.Add(tabWomanFunc);
+            TabItem atanDerivative = new TabItem();
+            FunctionControl controlAtanDerivative = new FunctionControl(new AtanDerivative(), atanDerivative);
+            atanDerivative.Header = "atan derivative"; 
+            atanDerivative.Content = controlAtanDerivative;
+            tabsFunctions.Items.Add(atanDerivative);
         }
     }
 }
